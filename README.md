@@ -204,7 +204,7 @@ Configurado en `app/layout.tsx`:
 
 ## Redes sociales
 
-Actualmente **ocultas** (no hay perfiles oficiales). Para agregarlas después, edita `lib/social.ts` y descomenta las URLs.
+Actualmente **ocultas** (no hay perfiles oficiales). Para agregarlas después, edita `lib/social.tsx` y agrega las URLs en `socialLinks`.
 
 ---
 

@@ -2,7 +2,7 @@ import { contact } from "@/lib/contact";
 
 /**
  * Placeholder para redes sociales oficiales.
- * Cuando existan perfiles, descomenta y completa las URLs en socialLinks.
+ * Cuando existan perfiles, agrega entradas en socialLinks.
  */
 const socialLinks = [] as {
   name: string;
