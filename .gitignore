@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+.env
+.env.local
+.env*.local
+
+# Next.js
+.next
+out
+
+# OS
+.DS_Store
+
+# Debug
+npm-debug.log*
+*.pem
+*.zip
+
+# Vercel
+.vercel
+
+# Keep public/Imagenes synced via script — both Imagenes/ and copy are tracked
