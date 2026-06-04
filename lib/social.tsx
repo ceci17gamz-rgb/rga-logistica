@@ -4,12 +4,10 @@ import { contact } from "@/lib/contact";
  * Placeholder para redes sociales oficiales.
  * Cuando existan perfiles, descomenta y completa las URLs en socialLinks.
  */
-const socialLinks = [
-  // { name: "LinkedIn", href: "https://linkedin.com/company/rga-logistica" },
-  // { name: "Facebook", href: "https://facebook.com/rgalogistica" },
-  // { name: "Instagram", href: "https://instagram.com/rgalogistica" },
-  // { name: "TikTok", href: "https://tiktok.com/@rgalogistica" },
-] as const;
+const socialLinks = [] as {
+  name: string;
+  href: string;
+}[];
 
 export function SocialLinks() {
   if (socialLinks.length === 0) return null;
