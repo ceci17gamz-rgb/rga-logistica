@@ -1,6 +1,6 @@
 import { Logo } from "@/components/ui/Logo";
 import { ContactLinks } from "@/components/ui/ContactLinks";
-import { SocialLinks } from "@/lib/social";
+import { SocialLinks } from "@/components/ui/SocialLinks";
 import { company } from "@/lib/brand";
 import { contactLinks } from "@/lib/contact";
 import { Phone } from "lucide-react";
