@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Ship,
@@ -9,8 +8,16 @@ import {
   Globe2,
   Container,
   ArrowRight,
+  MapPin,
 } from "lucide-react";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+
+const transportModes = [
+  { icon: Ship, label: "Marítimo" },
+  { icon: Plane, label: "Aéreo" },
+  { icon: Train, label: "Terrestre" },
+  { icon: Container, label: "Contenedores" },
+];
 
 export function Hero() {
   return (
@@ -79,12 +86,7 @@ export function Hero() {
               transition={{ delay: 0.5 }}
               className="mt-12 flex flex-wrap gap-6 text-white/70"
             >
-              {[
-                { icon: Ship, label: "Marítimo" },
-                { icon: Plane, label: "Aéreo" },
-                { icon: Train, label: "Terrestre" },
-                { icon: Container, label: "Contenedores" },
-              ].map(({ icon: Icon, label }) => (
+              {transportModes.map(({ icon: Icon, label }) => (
                 <div key={label} className="flex items-center gap-2">
                   <Icon className="h-5 w-5 text-brand-blue-light" />
                   <span className="text-sm font-medium">{label}</span>
@@ -94,16 +96,79 @@ export function Hero() {
           </div>
 
           <AnimateOnScroll className="relative hidden lg:block" delay={0.2}>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-brand-lg border border-white/10">
-              <Image
-                src="https://images.unsplash.com/photo-1494412577547-aa2d949f098b?w=1200&q=80"
-                alt="Contenedores y logística internacional"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 50vw, 600px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 to-transparent" />
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-brand-lg border border-white/15 bg-brand-navy/40 backdrop-blur-sm">
+              <div className="absolute inset-0 pattern-bg opacity-40" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(74,154,202,0.35),transparent_55%)]" />
+
+              <svg
+                className="absolute inset-0 h-full w-full text-brand-blue-light/25"
+                viewBox="0 0 400 300"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M40 220 C120 180, 200 240, 280 160 S 360 120, 380 80"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeDasharray="8 6"
+                />
+                <path
+                  d="M60 260 C140 200, 220 220, 300 180"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeOpacity="0.6"
+                />
+                <circle cx="380" cy="80" r="6" fill="currentColor" />
+                <circle cx="40" cy="220" r="6" fill="currentColor" />
+              </svg>
+
+              <div className="absolute inset-0 flex items-center justify-center">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 48, repeat: Infinity, ease: "linear" }}
+                  className="h-56 w-56 rounded-full border border-dashed border-white/20"
+                />
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+                  className="absolute h-40 w-40 rounded-full border border-brand-blue-light/30"
+                />
+                <div className="absolute flex h-20 w-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+                  <Globe2 className="h-10 w-10 text-brand-blue-light" />
+                </div>
+              </div>
+
+              <motion.div
+                animate={{ y: [0, -6, 0], x: [0, 4, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-10 right-12 rounded-xl bg-brand-navy/80 border border-brand-blue/30 p-3 shadow-glow"
+              >
+                <Ship className="h-7 w-7 text-brand-blue-light" />
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 6, 0], x: [0, -4, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute bottom-16 left-10 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-3"
+              >
+                <Plane className="h-6 w-6 text-brand-blue-light" />
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-1/2 left-8 rounded-lg bg-white/10 backdrop-blur-sm border border-white/15 p-2.5"
+              >
+                <Train className="h-5 w-5 text-brand-blue-light" />
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="absolute bottom-10 right-16 rounded-lg bg-white/10 backdrop-blur-sm border border-white/15 p-2.5"
+              >
+                <Container className="h-5 w-5 text-brand-blue-light" />
+              </motion.div>
             </div>
 
             <motion.div
@@ -125,9 +190,15 @@ export function Hero() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -top-4 -right-4 rounded-xl bg-brand-navy border border-brand-blue/30 p-4 shadow-glow"
+              className="absolute -top-4 -right-4 rounded-xl bg-white p-4 shadow-brand-lg"
             >
-              <Ship className="h-8 w-8 text-brand-blue-light" />
+              <div className="flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-brand-blue" />
+                <div>
+                  <p className="text-xs font-semibold text-brand-navy">Cobertura global</p>
+                  <p className="text-[10px] text-brand-navy/60">MX · Internacional</p>
+                </div>
+              </div>
             </motion.div>
           </AnimateOnScroll>
         </div>

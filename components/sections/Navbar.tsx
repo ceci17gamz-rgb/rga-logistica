@@ -44,7 +44,16 @@ export function Navbar() {
       )}
     >
       <nav className="section-container flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Logo size="sm" />
+        <div
+          className={cn(
+            "rounded-lg transition-all duration-300",
+            !scrolled
+              ? "bg-white/90 backdrop-blur-sm px-3 py-2 shadow-sm border border-white/40"
+              : "px-0 py-0"
+          )}
+        >
+          <Logo size="sm" />
+        </div>
 
         <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
